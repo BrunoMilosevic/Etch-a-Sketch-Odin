@@ -32,4 +32,38 @@ body{
     align-items: center;
     color: beige;
 }
+.sketch-board{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 350px;
+    background-color: rgb(207, 206, 206);
+   
+}
+.color-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.color-buttons button, .resize{
+    font-family: "Lobster", sans-serif;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: beige;
+
+}
+.property-container{
+    display: flex;
+    flex-direction: column;
+}
+input::placeholder{
+    font-size: 0.7rem;
+}
+.sketch-pixel{
+    width : 6.25%;
+    height: 6.25%;
+    border: 1px solid black;
+    background-color: gray;
+}
+
 
