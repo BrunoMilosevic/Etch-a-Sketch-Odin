@@ -11,21 +11,20 @@ function initializeSketch(n){
         
       })
       sketchboard.appendChild(sketchPixel);
-      console.log(sketchPixel.style.backgroundColor);
-      
+      console.log(sketchPixel.style.backgroundColor);      
     }
-
     
 }
 
 
 function changeColor(element, color){
+
     // To prevent from overriding colors
     if (element.style.backgroundColor == "rgb(128, 128, 128)"){
         element.style.backgroundColor = color;  
     }
-    if(!(element.style.backgroundColor == "rgb(128, 128, 128)") && color == "gray"){
-      element.style.backgroundColor = hoverColor;
+    if(element.style.backgroundColor != "rgb(128,128,128)" && color == "gray"){
+        element.style.backgroundColor = "rgb(128,128,128)";
     }
        
 }
@@ -37,8 +36,11 @@ const grayBtn = document.querySelector(".gray-btn");
 const randomBtn = document.querySelector(".random-btn");
 const resetBtn = document.querySelector(".reset-btn");
 const eraseBtn = document.querySelector(".erase-btn");
+const sizeInput = document.querySelector(".size-input");
+const resizeButton = document.querySelector(".resize")
+let pixelNum = 16; // Default starting value
 let hoverColor = "black";
-initializeSketch(16);
+initializeSketch(pixelNum);
 blackBtn.addEventListener("click", ()=>{
   hoverColor = "black";
 });
@@ -51,5 +53,23 @@ randomBtn.addEventListener("click", ()=>{
   hoverColor = randomColor;
 })
 eraseBtn.addEventListener("click", ()=>{
-  hoverColor = "gray";
+   hoverColor = "gray"
+})
+resetBtn.addEventListener("click", ()=>{
+  sketchboard.innerHTML = "";
+  initializeSketch(pixelNum)
+})
+resizeButton.addEventListener("click", ()=>{
+  pixelNum = sizeInput.value;
+  sketchboard.innerHTML = "";
+  if(pixelNum > 100 || pixelNum < 2){
+    alert("INVALID VALUE (please enter a value between 2 and 100");
+    return;
+  }
+  initializeSketch(pixelNum);
+})
+sizeInput.addEventListener("keypress", function(event){
+  if(event.key == "ENTER"){
+    event.preventDefault();
+  }
 })
