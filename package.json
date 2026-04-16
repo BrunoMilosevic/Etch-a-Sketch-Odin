@@ -1,0 +1,27 @@
+{
+  "name": "etch-a-sketch-odin",
+  "version": "1.0.0",
+  "description": "Basic Etch-a-sketch project. Drawing happens when user hovers over the sketchboard",
+  "main": "script.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrunoMilosevic/Etch-a-Sketch-Odin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/BrunoMilosevic/Etch-a-Sketch-Odin/issues"
+  },
+  "homepage": "https://github.com/BrunoMilosevic/Etch-a-Sketch-Odin#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  }
+}
