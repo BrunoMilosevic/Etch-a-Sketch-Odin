@@ -23,7 +23,7 @@ The objective of this test plan is to verify that the Etch-a-Sketch web applicat
 ### 3.2 Drawing Behavior (Hover)
 - Hovering over a square changes its color
 - Multiple squares can be colored
-- Fast mouse movement still triggers coloring
+
 
 ### 3.3 Resize Functionality
 - User can input a new grid size
