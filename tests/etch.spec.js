@@ -87,7 +87,50 @@ test('Test-007: Verify grid input with valid input', async({page}) =>{
 })
 test('Test-008: Verify grid input with invalid value', async({page}) =>{
     await page.goto(URL);
+    let alertMessage = '';
+
+    page.on('dialog', async dialog =>{
+        alertMessage = dialog.message();
+        await dialog.dismiss();
+    } )
+    await page.fill("input", "1");
+    await page.getByText("Resize").click();
+
+    const squares = page.locator(".sketch-pixel");
+
+    expect(alertMessage).not.toBe('') // Check to se if alert message is not empty;
+
+    await expect(squares).not.toHaveCount(0); // Check to see if squares are visibile on the page
+    
+});
+
+test('Test-009: Verify grid input with non-numeric value', async({page}) =>{
+    await page.goto(URL);
+    let alertMessage = '';
+
+    page.on('dialog', async dialog =>{
+        alertMessage = dialog.message();
+        await dialog.dismiss();
+    })
     await page.fill("input", "abc");
     await page.getByText("Resize").click();
+
+    const squares = page.locator(".sketch-pixel");
+
+    expect(alertMessage).not.toBe('');
+    await expect(squares).not.toHaveCount(0);
+})
+
+test('Test-010: User can input a value and press "Enter" button to resize the grid', async({page}) =>{
+    await page.goto(URL);
     
+    const input = page.locator("input");
+
+    await input.fill("6") // valid input
+
+    await input.press("Enter");
+
+    const squares = page.locator(".sketch-pixel");
+
+    await expect(squares).toHaveCount(36);
 })
